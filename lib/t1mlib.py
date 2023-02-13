@@ -90,7 +90,13 @@ class t1mAddon(object):
     def getAddonEpisodes(self, url, ilist):
         return ilist
 
+    def getAddonEpisodes2(self, url, ilist):
+        return ilist
+
     def getAddonSearch(self, url, ilist):
+        return ilist
+
+    def getAddonSearchQuery(self, url, ilist):
         return ilist
 
 
@@ -281,7 +287,9 @@ class t1mAddon(object):
                   'GM' : [self.getAddonMovies, 'movies'],
                   'GS' : [self.getAddonShows, 'tvshows'],
                   'GE' : [self.getAddonEpisodes, 'episodes'],
-                  'SE' : [self.getAddonSearch, 'movies'],
+                  'GE2': [self.getAddonEpisodes2, 'episodes'],
+                  'SE' : [self.getAddonSearch, 'episodes'],
+                  'SQ' : [self.getAddonSearchQuery, 'episodes'],
                   'GL' : [self.getAddonListing, 'episodes']}
         ftable = {'GV' : self.getAddonVideo,
                   'LV' : self.getAddonLiveVideo,
