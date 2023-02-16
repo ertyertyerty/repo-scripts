@@ -7,3 +7,4 @@ V4.0.4 - Matrix version - added music video support
 V4.0.6 - fix for Android file write having a Type Error
 V4.0.7 - fix tv listings for live stream addons
 V4.0.8 - Add getAddonSearchQuery and getAddonEpisodes2
+V4.0.9 - Add getAddonShows2, getAddonEpisodes3 and getAddonAudio

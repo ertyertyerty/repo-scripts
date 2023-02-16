@@ -87,10 +87,16 @@ class t1mAddon(object):
     def getAddonShows(self, url, ilist):
         return ilist
 
+    def getAddonShows2(self, url, ilist):
+        return ilist
+
     def getAddonEpisodes(self, url, ilist):
         return ilist
 
     def getAddonEpisodes2(self, url, ilist):
+        return ilist
+
+    def getAddonEpisodes3(self, url, ilist):
         return ilist
 
     def getAddonSearch(self, url, ilist):
@@ -164,6 +170,10 @@ class t1mAddon(object):
 
 
     def getAddonVideo(self, url):
+        xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, xbmcgui.ListItem(path=uqp(url), offscreen=True))
+
+
+    def getAddonAudio(self, url):
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, xbmcgui.ListItem(path=uqp(url), offscreen=True))
 
 
@@ -286,12 +296,15 @@ class t1mAddon(object):
                   'GC' : [self.getAddonCats, 'files'],
                   'GM' : [self.getAddonMovies, 'movies'],
                   'GS' : [self.getAddonShows, 'tvshows'],
+                  'GS2': [self.getAddonShows2, 'tvshows'],
                   'GE' : [self.getAddonEpisodes, 'episodes'],
                   'GE2': [self.getAddonEpisodes2, 'episodes'],
+                  'GE3': [self.getAddonEpisodes3, 'episodes'],
                   'SE' : [self.getAddonSearch, 'episodes'],
                   'SQ' : [self.getAddonSearchQuery, 'episodes'],
                   'GL' : [self.getAddonListing, 'episodes']}
         ftable = {'GV' : self.getAddonVideo,
+                  'GA' : self.getAddonAudio,
                   'LV' : self.getAddonLiveVideo,
                   'AM' : self.addMovieToLibrary,
                   'AS' : self.addShowToLibrary,
