@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Framework Video Addon Routines for Kodi
+# Framework Video Addon Routines
 # For Kodi Matrix (v19) and above
 #  
 #
@@ -87,22 +87,10 @@ class t1mAddon(object):
     def getAddonShows(self, url, ilist):
         return ilist
 
-    def getAddonShows2(self, url, ilist):
-        return ilist
-
     def getAddonEpisodes(self, url, ilist):
         return ilist
 
-    def getAddonEpisodes2(self, url, ilist):
-        return ilist
-
-    def getAddonEpisodes3(self, url, ilist):
-        return ilist
-
     def getAddonSearch(self, url, ilist):
-        return ilist
-
-    def getAddonSearchQuery(self, url, ilist):
         return ilist
 
 
@@ -158,7 +146,7 @@ class t1mAddon(object):
             fanart = self.addonFanart
             ilist = self.addMenuItem(name,'LV', ilist, url, thumb, fanart, infoList, isFolder=False)
            break
-        return(ilist)
+        return ilist
 
 
     def getAddonLiveVideo(self, url):
@@ -281,6 +269,8 @@ class t1mAddon(object):
         ih = int(sys.argv[1])
         xbmcplugin.setContent(ih, content)
         xbmcplugin.addSortMethod(ih, xbmcplugin.SORT_METHOD_UNSORTED)
+        xbmcplugin.addSortMethod(ih, xbmcplugin.SORT_METHOD_DATE)
+        xbmcplugin.addSortMethod(ih, xbmcplugin.SORT_METHOD_DURATION)
         xbmcplugin.addSortMethod(ih, xbmcplugin.SORT_METHOD_TITLE)
         xbmcplugin.addSortMethod(ih, xbmcplugin.SORT_METHOD_EPISODE)
         ilist = dirFunc(url, [])
@@ -294,14 +284,10 @@ class t1mAddon(object):
     def processAddonEvent(self):
         mtable = {None : [self.getAddonMenu, 'files'],
                   'GC' : [self.getAddonCats, 'files'],
-                  'GM' : [self.getAddonMovies, 'movies'],
+                  'GM' : [self.getAddonMovies, 'episodes'],
                   'GS' : [self.getAddonShows, 'tvshows'],
-                  'GS2': [self.getAddonShows2, 'tvshows'],
                   'GE' : [self.getAddonEpisodes, 'episodes'],
-                  'GE2': [self.getAddonEpisodes2, 'episodes'],
-                  'GE3': [self.getAddonEpisodes3, 'episodes'],
                   'SE' : [self.getAddonSearch, 'episodes'],
-                  'SQ' : [self.getAddonSearchQuery, 'episodes'],
                   'GL' : [self.getAddonListing, 'episodes']}
         ftable = {'GV' : self.getAddonVideo,
                   'GA' : self.getAddonAudio,
